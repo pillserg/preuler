@@ -1,3 +1,5 @@
+import qualified Data.Set as Set
+
 -- some stuff. and few preuler problems
 mytake :: (Num i, Ord i) => i -> [a] -> [a]
 mytake n _
@@ -28,6 +30,15 @@ quicksort [] = []
 quicksort (x:xs) = quicksort [a | a <- xs, a <= x] ++ [x] ++ quicksort [a | a <- xs, a > x ]
 
 ------------------------------------------------------
+-- http://projecteuler.net/problem=1
+-- If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+-- Find the sum of all the multiples of 3 or 5 below 1000.
+sumOfMultiples3and5 limit =
+    let mul3 = Set.fromList $ map (*3) [1..(limit/3)]
+        mul5 = Set.fromList $ map (*5) [1..(limit/5)]
+    in sum $ Set.toList $ Set.union mul3 mul5
+
+sumOfMultiples3and5under1000 = sumOfMultiples3and5 1000
 
 --http://projecteuler.net/problem=4
 

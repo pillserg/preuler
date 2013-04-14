@@ -117,6 +117,21 @@ prodList' result fromlst n
 _EULER_ANSWER_8 = maximum $ prodList (map (Char.digitToInt) problem8InitialData) 5
 
 
+--http://projecteuler.net/problem=9
+pithagoreanTripletsUnder n =
+    [
+        (a,  b,  c)
+        | a <- [1..n], b <-[1..n],
+        let c = round . sqrt . fromIntegral $ a^2 + b^2,
+        (a < b && b < c),
+        a^2 + b^2 == c^2
+    ]
+
+_EULER_ANSWER_9 =
+    let triplet = (filter (\(a, b, c) -> a + b + c == 1000) (pithagoreanTripletsUnder 1000)) !! 0
+    in (\(a, b, c) -> a * b * c) triplet
+
+
 main =
     -- o i,
     putStrLn $
@@ -128,7 +143,7 @@ main =
         "projecteuler pr 6: actual: 25164150, calculated: "       ++ show _EULER_ANSWER_6     ++ "\n" ++
         "projecteuler pr 7: actual: 104743, calculated: "         ++ show _EULER_ANSWER_7     ++ "\n" ++
         "projecteuler pr 8: actual: 40824, calculated: "          ++ show _EULER_ANSWER_8     ++ "\n" ++
-        "projecteuler pr 9: actual: 31875000, calculated: "       ++ show "_EULER_ANSWER_9"   ++ "\n" ++
+        "projecteuler pr 9: actual: 31875000, calculated: "       ++ show _EULER_ANSWER_9     ++ "\n" ++
         "projecteuler pr 10: actual: 142913828922, calculated: "  ++ show "_EULER_ANSWER_10"  ++ "\n" ++
         "projecteuler pr 11: actual: 70600674, calculated: "      ++ show "_EULER_ANSWER_11"  ++ "\n" ++
         "projecteuler pr 12: actual: ??????, calculated: "        ++ show "_EULER_ANSWER_12"  ++ "\n" ++

@@ -1,6 +1,8 @@
 -- it's mainly not about performance, but about getting the result )
 import qualified Data.Set as Set
 import qualified Data.Char as Char
+import Debug.Trace
+import Data.Time
 
 
 ----------------------------------------
@@ -130,6 +132,27 @@ pithagoreanTripletsUnder n =
 _EULER_ANSWER_9 =
     let triplet = (filter (\(a, b, c) -> a + b + c == 1000) (pithagoreanTripletsUnder 1000)) !! 0
     in (\(a, b, c) -> a * b * c) triplet
+
+
+-- http://projecteuler.net/problem=10
+-- bruteforce soulution (It's really time to implement some nice sive solution or use primes from Haskell Packages :) )
+-- to long _EULER_ANSWER_10 = sum $ filter (isPrime) [2..2000000]
+
+-- this solution finished in about 3 minutes in ghci
+-- not too bad but still not good + it's ugly
+sieveOfEratosthenes :: Integer -> [Integer]
+sieveOfEratosthenes n = sieveOfEratosthenes' 2 [2..n] [2]
+sieveOfEratosthenes' _ [] primes = primes
+sieveOfEratosthenes' p sieve primes =
+    let new_sieve = dropWhile (<=p) (filter (\x -> x `rem` p /= 0) sieve)
+        new_prime = new_sieve!!0
+
+    in  if length(new_sieve) > 150000
+            then sieveOfEratosthenes' new_prime new_sieve (new_prime:primes)
+        else primes ++ (filter (isPrime) new_sieve)
+
+
+_EULER_ANSWER_10 = sum $ sieveOfEratosthenes 2000000
 
 
 main =

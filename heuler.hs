@@ -78,17 +78,25 @@ _EULER_ANSWER_6 = sumProdDivProdsSum [1..100]
 ----------------------------------------
 --http://projecteuler.net/problem=7
 
--- coming soon :)
+_EULER_ANSWER_7 = (filter (isPrime) [1..]) !! 10001
 
 main =
     -- o i,
     putStrLn $
-        "projecteuler pr 1: actual: 233168, calculated: "       ++ show _EULER_ANSWER_1      ++ "\n" ++
-        "projecteuler pr 2: actual: 4613732, calculated: "      ++ show _EULER_ANSWER_2      ++ "\n" ++
-        "projecteuler pr 3: actual: 6857, calculated: "         ++ show _EULER_ANSWER_3      ++ "\n" ++
-        "projecteuler pr 4: actual: 906609, calculated: "       ++ show _EULER_ANSWER_4      ++ "\n" ++
-        "projecteuler pr 5: actual: 232792560, calculated: "    ++ show _EULER_ANSWER_5      ++ "\n" ++
-        "projecteuler pr 5: actual: 25164150, calculated: "     ++ show _EULER_ANSWER_6      ++ "\n" ++
-        "projecteuler pr 5: actual: 104743, calculated: "       ++ show "_EULER_ANSWER_7"    ++ "\n"
+        "projecteuler pr 1: actual: 233168, calculated: "         ++ show _EULER_ANSWER_1     ++ "\n" ++
+        "projecteuler pr 2: actual: 4613732, calculated: "        ++ show _EULER_ANSWER_2     ++ "\n" ++
+        "projecteuler pr 3: actual: 6857, calculated: "           ++ show _EULER_ANSWER_3     ++ "\n" ++
+        "projecteuler pr 4: actual: 906609, calculated: "         ++ show _EULER_ANSWER_4     ++ "\n" ++
+        "projecteuler pr 5: actual: 232792560, calculated: "      ++ show _EULER_ANSWER_5     ++ "\n" ++
+        "projecteuler pr 6: actual: 25164150, calculated: "       ++ show _EULER_ANSWER_6     ++ "\n" ++
+        "projecteuler pr 7: actual: 104743, calculated: "         ++ show _EULER_ANSWER_7     ++ "\n" ++
+        "projecteuler pr 8: actual: 40824, calculated: "          ++ show "_EULER_ANSWER_8"   ++ "\n" ++
+        "projecteuler pr 9: actual: 31875000, calculated: "       ++ show "_EULER_ANSWER_9"   ++ "\n" ++
+        "projecteuler pr 10: actual: 142913828922, calculated: "  ++ show "_EULER_ANSWER_10"  ++ "\n" ++
+        "projecteuler pr 11: actual: 70600674, calculated: "      ++ show "_EULER_ANSWER_11"  ++ "\n" ++
+        "projecteuler pr 12: actual: ??????, calculated: "        ++ show "_EULER_ANSWER_12"  ++ "\n" ++
+        "projecteuler pr 13: actual: 5537376230, calculated: "    ++ show "_EULER_ANSWER_13"  ++ "\n" ++
+        "projecteuler pr 14: actual: 837799, calculated: "        ++ show "_EULER_ANSWER_14"  ++ "\n" ++
+        "projecteuler pr 15: actual: ??????, calculated: "        ++ show "_EULER_ANSWER_15"  ++ "\n"
 
 

@@ -1,3 +1,8 @@
+-- !!!!!!!!! SPOILERS ALERT :) !!!!!!!!!!!! --
+-- !!!!!!!!! SPOILERS ALERT :) !!!!!!!!!!!! --
+-- !!!!!!!!! SPOILERS ALERT :) !!!!!!!!!!!! --
+-- !!!!!!!!! SPOILERS ALERT :) !!!!!!!!!!!! --
+
 -- it's mainly not about performance, but about getting the result )
 import qualified Data.Set as Set
 import qualified Data.Char as Char
@@ -231,6 +236,20 @@ getVertSubMatrices matrix n result
 _EULER_ANSWER_11 = maximum $ concat $ map (getProducts) (getSubMatrixes pr11data 4)
 
 --------------------------------------------------------------------------------
+-- http://projecteuler.net/problem=12
+triangular_numbers = [sum [1..n] | n <- [1..]]
+divisors n = 1 : filter ((==0) . rem n) [2 .. n `div` 2]
+
+getFirstNumWithDivisors n pool
+    | num_divisors >= n = num
+    | num_divisors > 100 = trace ((show num) ++ ": " ++ (show num_divisors)) (getFirstNumWithDivisors n (tail pool))
+    | otherwise         = getFirstNumWithDivisors n (tail pool)
+    where num = pool !! 0
+          num_divisors = length (divisors num)
+
+some_primes = filter (isPrime) [1..17]
+_EULER_ANSWER_12 = getFirstNumWithDivisors 500 (filter (\x-> x > product(some_primes) && all (==0) (map (rem x) some_primes)) triangular_numbers)
+
 
 --------------------------------------------------------------------------------
 main =
@@ -246,7 +265,7 @@ main =
         "pr 09: actual: 31875000:      "   ++ show _EULER_ANSWER_9     ++ "\n" ++
         "pr 10: actual: 142913828922:  "   ++ show "TAKES to long :("  ++ "\n" ++
         "pr 11: actual: 70600674:      "   ++ show _EULER_ANSWER_11    ++ "\n" ++
-        "pr 12: actual: ??????,:       "   ++ show "_EULER_ANSWER_12"  ++ "\n" ++
+        "pr 12: actual: 76576500:      "   ++ show _EULER_ANSWER_12  ++ "\n" ++
         "pr 13: actual: 5537376230:    "   ++ show "_EULER_ANSWER_13"  ++ "\n" ++
         "pr 14: actual: 837799:        "   ++ show "_EULER_ANSWER_14"  ++ "\n" ++
         "pr 15: actual: ??????,:       "   ++ show "_EULER_ANSWER_15"  ++ "\n"

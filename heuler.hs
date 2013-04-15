@@ -203,9 +203,7 @@ getProducts matrix =
 getDiagonal m = getDiagonal' m [] 0
 getDiagonal' m result i
     | i == length m  = reverse result
-    | otherwise      =
-        let new_res = m !! i !! i : result
-        in getDiagonal' m new_res (succ i)
+    | otherwise      = getDiagonal' m (m !! i !! i : result) (succ i)
 
 
 getDiagonals m = getDiagonal m : getDiagonal (reverse m) : []
@@ -216,14 +214,19 @@ getSubMatrixes [] _ = []
 getSubMatrixes _ 0 = []
 getSubMatrixes matrix n = getSubMatrixes' matrix n []
 getSubMatrixes' matrix n result
-    | n > length (matrix !! 0) = reverse result
-    | otherwise = getSubMatrixes' (map (tail) matrix) n (getVertSubMatrices matrix n result)
-
+    | horizontal_limit_reached = reverse result
+    | otherwise                = getSubMatrixes' stripped_matrix n vertical_submatices
+    where horizontal_limit_reached = n > length (matrix !! 0)
+          stripped_matrix          = (map (tail) matrix)
+          vertical_submatices      = getVertSubMatrices matrix n result
 
 getVertSubMatrices :: [[a]] -> Int -> [[[a]]] -> [[[a]]]
 getVertSubMatrices matrix n result
-    | n > length matrix = result
-    | otherwise = getVertSubMatrices (tail matrix) n (take n (map (take n) matrix) : result)
+    | vertical_limit_reached = result
+    | otherwise = getVertSubMatrices stripped_matrix n (take n column : result)
+    where vertical_limit_reached = n > length matrix
+          stripped_matrix        = tail matrix
+          column                 = map (take n) matrix
 
 _EULER_ANSWER_11 = maximum $ concat $ map (getProducts) (getSubMatrixes pr11data 4)
 

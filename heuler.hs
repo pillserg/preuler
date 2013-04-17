@@ -371,9 +371,19 @@ collatzSequence' n accum
 -- it took few minutes to process all numbers, thus some optimisation is needed
 -- but it's ok for now.
 
-_EULER_ANSWER_14 =snd $ maximum $ map (\x -> (let coltzsl = length (collatzSequence x) in if coltzsl > 300 then (trace (show x ++ ": " ++ show coltzsl) (coltzsl)) else coltzsl, x)) [1..1000000]
+_EULER_ANSWER_14 = snd $ maximum $ map (\x -> (length (collatzSequence x), x)) [1..1000000]
+
+-- http://projecteuler.net/problem=15
+--------------------------------------------------------------------------------
+-- coming soon
+
+-- http://projecteuler.net/problem=16
+--------------------------------------------------------------------------------
 
 
+-- http://projecteuler.net/problem=16
+-- again: languages with native "long" numbers support rules :)
+_EULER_ANSWER_16 =sum $  map (Char.digitToInt) (show (2^1000))
 --------------------------------------------------------------------------------
 main =
     putStrLn $
@@ -388,9 +398,9 @@ main =
         "pr 09: actual: 31875000:      "   ++ show _EULER_ANSWER_9     ++ "\n" ++
         "pr 10: actual: 142913828922:  "   ++ show "TAKES to long :("  ++ "\n" ++
         "pr 11: actual: 70600674:      "   ++ show _EULER_ANSWER_11    ++ "\n" ++
-        "pr 12: actual: 76576500:      "   ++ show _EULER_ANSWER_12  ++ "\n" ++
-        "pr 13: actual: 5537376230:    "   ++ show "_EULER_ANSWER_13"  ++ "\n" ++
-        "pr 14: actual: 837799:        "   ++ show "_EULER_ANSWER_14"  ++ "\n" ++
+        "pr 12: actual: 76576500:      "   ++ show _EULER_ANSWER_12    ++ "\n" ++
+        "pr 13: actual: 5537376230:    "   ++ show _EULER_ANSWER_13    ++ "\n" ++
+        "pr 14: actual: 837799:        "   ++ show "Takes to long :("  ++ "\n" ++
         "pr 15: actual: ??????,:       "   ++ show "_EULER_ANSWER_15"  ++ "\n"
 
 
